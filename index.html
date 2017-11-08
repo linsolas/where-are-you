@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team planning</title>
+      
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="planning.css" rel="stylesheet">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    </head>
+
+<body>
+    <div class="container-fluid">
+        <div id="rendered"></div>
+    </div>
+
+    <script id="calendar" type="text/x-handlebars-template">
+        {{#each months}}
+            <div class="month">
+                <h2><i class="fa fa-calendar"></i> {{name}}</h2>
+                <div>
+                    <table class="table table-striped table-hover table-bordered table-sm">
+                        <thead>
+                            <tr class="text-center">
+                                <td><i class="fa fa-user"></i> </td>
+                                {{#each days as |day|}}
+                                    <td>{{day}}</td>
+                                {{/each}}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each team}}
+                                <tr>
+                                    <td>{{name}}</td>
+                                    {{#each off as |value|}}
+                                        <td class="{{value}}"></td>
+                                    {{/each}}
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {{/each}}
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
